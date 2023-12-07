@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Nepse Alpha
-// @namespace    https://nepsealpha.com/trading/chart
-// @version      2023-12-07
-// @description  Nepse Alpha Dialogue Box Remover
+// @namespace    http://tampermonkey.net/
+// @version      1.0
+// @description  Remove boring dialogue box at starup
 // @author       Abhishek Ghimire (@cypherab01)
 // @match        https://nepsealpha.com/trading/chart
 // @updateURL    https://raw.githubusercontent.com/cypherab01/BoringJavaScript/main/nepse_alpha/script.js
