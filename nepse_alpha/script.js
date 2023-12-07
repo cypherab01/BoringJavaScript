@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Nepse Alpha
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.1
 // @description  Remove boring dialogue box at starup
 // @author       Abhishek Ghimire (@cypherab01)
 // @match        https://nepsealpha.com/trading/chart
@@ -11,29 +11,44 @@
 // @grant        none
 // ==/UserScript==
 
-(function() {
-    'use strict';
+(function () {
+  "use strict";
 
-    // Function to close the popup
-    function closePopUp() {
-        // Your XPath expression
-        const xpath = '//*[@id="chart_app_content"]/div/div[2]/div[1]/div[3]/div/div/div/span';
+  // Function to close the popup
+  function closePopUp() {
+    // Your XPath expression
+    const xpath =
+      '//*[@id="chart_app_content"]/div/div[2]/div[1]/div[3]/div/div/div/span';
 
-        // Evaluating the XPath expression and storing the result in btn
-        const btn = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+    // Evaluating the XPath expression and storing the result in btn
+    const btn = document.evaluate(
+      xpath,
+      document,
+      null,
+      XPathResult.FIRST_ORDERED_NODE_TYPE,
+      null
+    ).singleNodeValue;
 
-        // Check if the button is found
-        if (btn) {
-            // Simulate a click on the button
-            btn.click();
-        } else {
-            console.error('Button not found!');
-        }
+    // Check if the button is found
+    if (btn) {
+      // Simulate a click on the button
+      btn.click();
+    } else {
+      console.error("Button not found!");
     }
+  }
 
-    // Call the function to close the popup
-    closePopUp();
+  function removeContent() {
+    let dataLicense = document.querySelectorAll("div.card.mb-0");
 
-    // Other code goes here maybe in future.
+    dataLicense.forEach((element) => {
+      element.style.display = "none";
+    });
+  }
 
+  // Function Calls
+  closePopUp();
+  removeContent();
+
+  // Other code goes here maybe in future.
 })();
