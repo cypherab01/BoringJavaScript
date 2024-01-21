@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Nepse Alpha
 // @namespace    https://github.com/cypherab01
-// @version      1.2
-// @description  Remove boring dialogue box at starup
+// @version      2.0
+// @description  Remove boring dialogue box at startup and check for updates
 // @author       Abhishek Ghimire (@cypherab01)
 // @match        https://nepsealpha.com/trading/chart
 // @updateURL    https://raw.githubusercontent.com/cypherab01/BoringJavaScript/main/nepse_alpha/script.js
@@ -15,6 +15,7 @@
 (function () {
   "use strict";
 
+  // Function to remove an element by selector
   function removeElementBySelector(selector) {
     var element = document.querySelector(selector);
     if (element) {
@@ -22,9 +23,7 @@
     }
   }
 
-  // Call the function with the target selector
-  removeElementBySelector("#app > div > div:nth-child(3)");
-
+  // Function to select and click a button
   function selectAndClickButton() {
     var button = document.querySelector(
       "button.no-border.btn.btn-side-selected"
@@ -33,18 +32,58 @@
       button.click();
     }
   }
-  selectAndClickButton();
 
+  // Function to remove content
   function removeContent() {
     let dataLicense = document.querySelectorAll("div.card.mb-0");
-
     dataLicense.forEach((element) => {
       element.style.display = "none";
     });
   }
 
-  // Function Calls
+  // Function to check for updates
+  function checkForUpdate() {
+    const scriptUrl =
+      "https://raw.githubusercontent.com/cypherab01/BoringJavaScript/main/nepse_alpha/script.js";
+
+    fetch(scriptUrl)
+      .then((response) => response.text())
+      .then((data) => {
+        const match = data.match(/@version\s+(\d+\.\d+)/);
+        if (!match) {
+          console.error("Unable to extract version from the GitHub script.");
+          return;
+        }
+
+        const githubVersion = parseFloat(match[1]);
+        const currentVersion = parseFloat(
+          GM_info.script.version || "0.0" // Handle case where GM_info is not defined
+        );
+
+        if (githubVersion > currentVersion) {
+          const result = window.confirm(
+            "Nepse Alpha: A new version is available. Do you want to update?"
+          );
+
+          if (result) {
+            window.location.replace(scriptUrl);
+          }
+        }
+      })
+      .catch((error) => {
+        console.error("Error checking for updates:", error);
+      });
+  }
+
+  // Call the function with the target selector
+  removeElementBySelector("#app > div > div:nth-child(3)");
+
+  // Call the function to select and click the button
+  selectAndClickButton();
+
+  // Call the function to remove content
   removeContent();
 
-  // Other code goes here maybe in future.
+  // Call the function to check for updates
+  checkForUpdate();
 })();
