@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Nepse Alpha
 // @namespace    https://github.com/cypherab01
-// @version      1.2
+// @version      2.1
 // @description  Remove boring dialogue box at startup
 // @author       Abhishek Ghimire (@cypherab01)
 // @match        https://nepsealpha.com/trading/chart
