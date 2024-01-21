@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name         Nepse Alpha
 // @namespace    https://github.com/cypherab01
-// @version      2.0
-// @description  Remove boring dialogue box at startup and check for updates
+// @version      1.2
+// @description  Remove boring dialogue box at startup
 // @author       Abhishek Ghimire (@cypherab01)
 // @match        https://nepsealpha.com/trading/chart
-// @updateURL    https://raw.githubusercontent.com/cypherab01/BoringJavaScript/main/nepse_alpha/script.js
-// @downloadURL  https://raw.githubusercontent.com/cypherab01/BoringJavaScript/main/nepse_alpha/script.js
+// @updateURL    https://github.com/cypherab01/BoringJavaScript/raw/main/nepse_alpha/script.js
+// @downloadURL  https://github.com/cypherab01/BoringJavaScript/raw/main/nepse_alpha/script.js
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=nepsealpha.com
 // @homepage     https://github.com/cypherab01/BoringJavaScript/tree/main/nepse_alpha
 // @grant        none
