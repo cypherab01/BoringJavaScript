@@ -15,29 +15,25 @@
 (function () {
   "use strict";
 
-  // Function to close the popup
-  function closePopUp() {
-    // Your XPath expression
-    const xpath =
-      '//*[@id="chart_app_content"]/div/div[2]/div[1]/div[3]/div/div/div/span';
-
-    // Evaluating the XPath expression and storing the result in btn
-    const btn = document.evaluate(
-      xpath,
-      document,
-      null,
-      XPathResult.FIRST_ORDERED_NODE_TYPE,
-      null
-    ).singleNodeValue;
-
-    // Check if the button is found
-    if (btn) {
-      // Simulate a click on the button
-      btn.click();
-    } else {
-      console.error("Button not found!");
+  function removeElementBySelector(selector) {
+    var element = document.querySelector(selector);
+    if (element) {
+      element.remove();
     }
   }
+
+  // Call the function with the target selector
+  removeElementBySelector("#app > div > div:nth-child(3)");
+
+  function selectAndClickButton() {
+    var button = document.querySelector(
+      "button.no-border.btn.btn-side-selected"
+    );
+    if (button) {
+      button.click();
+    }
+  }
+  selectAndClickButton();
 
   function removeContent() {
     let dataLicense = document.querySelectorAll("div.card.mb-0");
@@ -48,7 +44,6 @@
   }
 
   // Function Calls
-  closePopUp();
   removeContent();
 
   // Other code goes here maybe in future.
